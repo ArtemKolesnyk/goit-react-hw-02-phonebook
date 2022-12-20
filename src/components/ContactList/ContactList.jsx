@@ -3,7 +3,7 @@ import Contact from '../Contact';
 
 const ContactList = ({ contacts, removeContact }) => {
   return contacts.map(contact => (
-    <Contact onRemoveContact={removeContact} key={contact.id} contact={contact}/>
+    <Contact removeContact={removeContact} key={contact.id} contact={contact}/>
   ))
 }
 

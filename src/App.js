@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { Component } from "react";
-// import GlobalStyle from "./GlobalStyle";
+import AppStyled from './App.styled';
 import ConatctForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from "./components/Filter";
@@ -22,22 +22,21 @@ class App extends Component {
     const newContact = {
       ...contacts,
       id: nanoid(),
-    };
-    
-    if (contacts && contacts) {
+    };    
+    if (this.state.contacts && this.state.contacts.find(contact => newContact.name === contact.name)) {
       alert(`${newContact.name} is already in contacts.`);
-    } else {debugger;
+    } else {
         this.setState(prevState => ({
         contacts: [...prevState.contacts, newContact]
       }));
     }
   };
 
-  removeContact = id => {
+  removeContact = contactId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id)
+      contacts: prevState.contacts.filter(({ id }) => id !== contactId),
     }));
-  };
+  }
 
   changeFilter = filter => {
     this.setState({ filter });
@@ -51,19 +50,18 @@ class App extends Component {
     
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter, contacts } = this.state;
     return (
       <>
-        {/* <GlobalStyle/> */}
+        <AppStyled/>
         <h1>--PHONEBOOK--</h1>
         <ConatctForm addContact={this.addContact} />
-        
         <h2>--CONTACTS--</h2>
         {contacts.length > 1 &&
-          (<Filter value={filter} onChangefilter={this.changeFilter} />)}
-        
-        <ContactList contacts={this.getFiltredContact()}
-          onRemoveContact={this.removeContact} 
+          (<Filter value={filter} onChangeFilter={this.changeFilter} />)}
+        <ContactList
+          contacts={this.getFiltredContact()}
+          removeContact={this.removeContact}
         />
       </>
     )

@@ -1,24 +1,25 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { Form, Label, Input } from '../ContactForm/ContactForm.styled';
+
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
-    <form>
-      <label>
-        Find contacts by name
-        <input
+    <Form>
+      <Label>
+        Find contact by name
+        <Input
           type="text"
           value={value}
-          onChange={(e) => onChangeFilter(e.target.value)}
+          onChange={e => onChangeFilter(e.target.value)}
         />
-      </label>
-    </form>
-  )
+      </Label>
+    </Form>
+  );
 };
 
 Filter.propTypes = {
   value: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired,
-};
+}
 
 export default Filter;
-
