@@ -1,9 +1,10 @@
 import { nanoid } from "nanoid";
 import { Component } from "react";
 import AppStyled from './App.styled';
-import ConatctForm from './components/ContactForm';
+import ConatctForm  from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from "./components/Filter";
+
 
 
 
@@ -25,8 +26,9 @@ class App extends Component {
     };    
     if (this.state.contacts && this.state.contacts.find(contact => newContact.name === contact.name)) {
       alert(`${newContact.name} is already in contacts.`);
+      return;
     } else {
-        this.setState(prevState => ({
+      this.setState(prevState => ({
         contacts: [...prevState.contacts, newContact]
       }));
     }
@@ -54,15 +56,17 @@ class App extends Component {
     return (
       <>
         <AppStyled/>
-        <h1>--PHONEBOOK--</h1>
-        <ConatctForm addContact={this.addContact} />
-        <h2>--CONTACTS--</h2>
-        {contacts.length > 1 &&
-          (<Filter value={filter} onChangeFilter={this.changeFilter} />)}
-        <ContactList
-          contacts={this.getFiltredContact()}
-          removeContact={this.removeContact}
-        />
+        <section>
+          <h1>--PHONEBOOK--</h1>
+          <ConatctForm onSubmit={this.addContact}/>
+          <h2>--CONTACTS--</h2>
+          {contacts.length > 1 &&
+            (<Filter value={filter} onChangeFilter={this.changeFilter} />)}
+          <ContactList
+            contacts={this.getFiltredContact()}
+            removeContact={this.removeContact}
+            />
+        </section>
       </>
     )
   }

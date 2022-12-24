@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const AppStyled = createGlobalStyle`
-  html {
-    box-sizing: border-box;
-  } 
   body {
     margin: 0px;
     padding: 0px;
@@ -13,6 +10,7 @@ const AppStyled = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   *,
   *::before,
   *::after {
@@ -20,17 +18,26 @@ const AppStyled = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
   code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+
   h1,
   h2 {
-    display: flax;
+    color: teal;
+    display: flex;
     justify-content: center;
-    color: #26676e;
   }
-   
+
+  section {
+    width: 600px;
+    border: 4px solid lightblue;
+    box-shadow: 0px 5px 10px yellow;
+    padding: 25px;
+    margin: auto;
+  }
 `;
 
 export default AppStyled;

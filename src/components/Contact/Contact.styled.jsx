@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const ContactItem = styled.li`
-  list-style-type: none;
-  color: blue;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  margin: 5px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
 `;
 
 export const ContactBtn = styled.button`
+  margin-bottom: 5px;
+  width: 100px;
+  cursor: pointer;
   padding: 5px;
   color: yellow;
   border-radius: 4px;
@@ -21,7 +21,6 @@ export const ContactBtn = styled.button`
 `;
 
 export const Text = styled.p`
-  color: green;
-  margin-right: 70px;
-  padding: 5px;
+  color: teal;
+  margin-right: 20px;
 `;

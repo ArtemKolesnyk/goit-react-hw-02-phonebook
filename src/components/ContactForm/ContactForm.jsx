@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from 'prop-types';
-import {Form, Label, Button, Input } from './ContactForm.styled';
+import {Form, Label, Button, Input} from './ContactForm.styled';
 
 
 
@@ -18,13 +18,16 @@ class ConatctForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addContact({ ...this.state })
+    this.props.onSubmit({ ...this.state })
+    this.inputReset(); 
+  };
+
+  inputReset = () => {
     this.setState({
       name: '',
       number: '',
-    })
-    
-  };
+    });
+  }
 
   render() {
     const { name, number } = this.state;
@@ -39,6 +42,7 @@ class ConatctForm extends Component {
             required
             value={name}
             onChange={this.handleChange}
+            placeholder="Enter your name..."
           />
         </Label>
         <Label>Number:
@@ -50,6 +54,7 @@ class ConatctForm extends Component {
             required
             value={number}
             onChange={this.handleChange}
+            placeholder="Enter your number..."
           /> 
         </Label>
         <Button>Add contact</Button>
@@ -59,10 +64,10 @@ class ConatctForm extends Component {
 };
 
 ConatctForm.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   number: PropTypes.number,
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
 }
 
 export default ConatctForm;

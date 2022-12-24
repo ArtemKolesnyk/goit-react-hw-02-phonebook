@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import Contact from '../Contact';
+import { ListItem } from './ContactList.styled';
 
 const ContactList = ({ contacts, removeContact }) => {
-  return contacts.map(contact => (
-    <Contact removeContact={removeContact} key={contact.id} contact={contact} />
-  ));
+  return <ListItem>
+    {contacts.map(contact => (
+      <Contact removeContact={removeContact} key={contact.id} contact={contact} />
+    ))}
+  </ListItem>
 };
 
 Contact.propTypes = {
@@ -12,7 +15,7 @@ Contact.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
   removeContact: PropTypes.func.isRequired,
 };
 
