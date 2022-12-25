@@ -16,10 +16,14 @@ class ConatctForm extends Component {
     });
   };
 
-  handleSubmit = e => {
+   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit({ ...this.state })
-    this.inputReset(); 
+    if (this.props.contacts.find(contact => this.state.name === contact.name)) {
+      alert(`${this.state.name} is already in contacts.`);
+      return;
+    }
+    this.props.onSubmit({ ...this.state });
+    this.inputReset();
   };
 
   inputReset = () => {
