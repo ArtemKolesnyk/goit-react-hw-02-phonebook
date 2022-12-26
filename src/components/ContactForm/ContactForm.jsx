@@ -1,5 +1,4 @@
 import { Component } from "react";
-import PropTypes from 'prop-types';
 import {Form, Label, Button, Input} from './ContactForm.styled';
 
 
@@ -66,12 +65,5 @@ class ConatctForm extends Component {
     )
   }
 };
-
-ConatctForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.number,
-  handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
-}
 
 export default ConatctForm;
